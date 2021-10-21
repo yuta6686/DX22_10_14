@@ -33,10 +33,10 @@ static CAMERA			g_Camera;		// カメラデータ
 //=============================================================================
 void InitCamera(void)
 {
-	g_Camera.pos = D3DXVECTOR3(POS_X_CAM, POS_Y_CAM, POS_Z_CAM);
-	g_Camera.at = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
-	g_Camera.up = D3DXVECTOR3(0.0f, 1.0f, 0.0f);
-	g_Camera.rot = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+	g_Camera.pos = D3DXVECTOR3(POS_X_CAM, POS_Y_CAM, POS_Z_CAM);//カメラの視点
+	g_Camera.at = D3DXVECTOR3(0.0f, 0.0f, 0.0f);	//カメラの注視点
+	g_Camera.up = D3DXVECTOR3(0.0f, -1.0f, 0.0f);	//カメラの上方向べくとる
+	g_Camera.rot = D3DXVECTOR3(0.0f, 0.0f, 0.0f);	//カメラの回転
 
 	// 視点と注視点の距離を計算
 	float vx, vz;
@@ -159,11 +159,12 @@ void UpdateCamera(void)
 void SetCamera(void) 
 {
 	// ビューマトリックス設定
-	D3DXMatrixLookAtLH(&g_Camera.mtxView, &g_Camera.pos, &g_Camera.at, &D3DXVECTOR3(0.0f, 1.0f, 0.0f));
+	D3DXMatrixLookAtLH(&g_Camera.mtxView, &g_Camera.pos, &g_Camera.at, &g_Camera.up);
 
 	SetViewMatrix(&g_Camera.mtxView);
 
 
+	//ニューマトリックスの逆行列を作ってるらしい。
 	float det;
 	D3DXMatrixInverse(&g_Camera.mtxInvView, &det, &g_Camera.mtxView);
 

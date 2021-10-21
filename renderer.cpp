@@ -613,10 +613,12 @@ HRESULT InitRenderer(HINSTANCE hInstance, HWND hWnd, BOOL bWindow)
 
 
 	//ライト初期化
-	g_Light.Direction = D3DXVECTOR4(0.0f, -1.0f, 0.0f, 0.0f);
+	g_Light.Direction = D3DXVECTOR4(0.0f, -1.0f, 0.0f, 0.0f);//上から下
 	g_Light.Diffuse = D3DXCOLOR(0.9f, 0.9f, 0.9f, 1.0f);
 	g_Light.Ambient = D3DXCOLOR(0.1f, 0.1f, 0.1f, 1.0f);
 	SetLight(g_Light);
+
+	 
 
 
 	//マテリアル初期化
