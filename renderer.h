@@ -54,10 +54,10 @@ enum FILTER_MODE
 // 頂点構造体
 struct VERTEX_3D
 {
-    D3DXVECTOR3 Position;
-    D3DXVECTOR3 Normal;
-    D3DXCOLOR  Diffuse;
-    D3DXVECTOR2 TexCoord;
+    D3DXVECTOR3 Position;		//ポジション
+    D3DXVECTOR3 Normal;			//法線
+    D3DXCOLOR  Diffuse;			//頂点カラー
+    D3DXVECTOR2 TexCoord;		//テクスチャ座標
 };
 
 
